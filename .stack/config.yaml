@@ -1,0 +1,9 @@
+# This file contains default non-project-specific settings for 'stack', used
+# in all projects.  For more information about stack's configuration, see
+# http://docs.haskellstack.org/en/stable/yaml_configuration/
+#
+nix:
+  enable: true
+  pure: false
+  # shell-file: /home/julie/.stack/shell.nix
+  add-gc-roots: true
