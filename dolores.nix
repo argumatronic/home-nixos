@@ -58,7 +58,8 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    wget sublime htop tree keepassx2 curl emacs openssl which];
+    wget sublime htop tree keepassx2 curl emacs openssl which stack ghc git 
+    gnumake acpi google-chrome];
 
   # List services that you want to enable:
 
@@ -66,7 +67,7 @@
   hardware.trackpoint.emulateWheel = true;
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -94,17 +95,29 @@
     wtf = "git status"; wow = "git commit -a"; 
     gitrekt = "git push origin master"; 
     gitbent = "git pull origin master";
+    ls = "ls --color --group-directories-first";
+    such = "git";
+    batty = "acpi";
   };
 
-  # time.timeZone = "America/Chicago";
-  # time.timeZone = "America/Denver";
-  time.timeZone = "Europe/Zurich";
+  services.redshift = { enable = true; } //
+    { latitude = "30.2672"; longitude = "-97.7431"; } # austin
+    #{ latitude = "43.6187"; longitude = "116.2146"; } # boise
+    #{ latitude = "33.784190"; longitude = "-84.374263"; } # atlanta
+    #{ latitude = "38.062373"; longitude = "-84.50178"; } # lexington
+    #{ latitude = "37.56"; longitude = "-122.33"; } # san mateo
+    ;
+
+  # time.timeZone = "America/Chicago"; # Central
+  time.timeZone = "America/New_York"; # Eastern
+  # time.timeZone = "America/Denver"; # Mountain
+  # time.timeZone = "Europe/Zurich";
 
   fonts = {
     enableFontDir          = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
-      corefonts inconsolata symbola ubuntu_font_family
+      corefonts inconsolata lato symbola ubuntu_font_family
       unifont vistafonts
     ];
   };
@@ -123,9 +136,12 @@
 
   users.extraUsers.julie = {
     name = "julie";
+    group = "users";
     extraGroups = ["wheel" "disk" "audio" "video" "networkmanager" "systemd-journal"];
     isNormalUser = true;
     uid = 1000;
+    createHome= true;
+    home = "/home/julie";
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
