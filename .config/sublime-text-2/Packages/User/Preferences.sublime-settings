@@ -1,15 +1,15 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/Amy.tmTheme",
-  "font_face": "",
-	"font_size": 11,
-  "tab_size": 2,
-  "translate_tabs_to_spaces": true,
-  "use_tab_stops": true,
-  "trim_automatic_white_space": true,
-  "word_wrap": "true",
-  "wrap_width": 81,
-  "trim_trailing_white_space_on_save": true,
-  "ensure_newline_at_eof_on_save": true,
-  "save_on_focus_lost": true,
-  "auto_complete_commit_on_tab": true
+	"auto_complete_commit_on_tab": true,
+	"color_scheme": "Packages/Cake.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"font_face": "Ubuntu Mono",
+	"font_size": 14,
+	"save_on_focus_lost": true,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"trim_automatic_white_space": true,
+	"trim_trailing_white_space_on_save": true,
+	"use_tab_stops": true,
+	"word_wrap": "true",
+	"wrap_width": 81
 }
