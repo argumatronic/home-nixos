@@ -1,0 +1,28 @@
+# IntelliJ
+*.ipr
+*.swp
+.idea
+*.iml
+ideaHaskellLib
+.ideaHaskellLib
+
+# Vagrant
+.vagrant
+
+# Python
+*.pyc
+*.egg
+
+# Haskell
+.cabal-sandbox
+.stack-work
+dist-newstyle
+
+# Emacs
+.projectile
+
+# Sublime
+*.sublime-workspace
+
+# PID files contain IDs of running processes
+*.pid
