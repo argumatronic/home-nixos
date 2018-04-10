@@ -25,32 +25,12 @@
 
   nix.extraOptions = "binary-caches-parallel-connections = 5";
 
+  nix.binaryCaches = [ "https://cache.nixos.org/" "https://nixcache.reflex-frp.org" ];
+  nix.binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
-
-
-  # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -71,15 +51,6 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.kdm.enable = true;
-  # services.xserver.desktopManager.kde4.enable = true;
 
   services.xserver = {
     enable = true;
@@ -113,6 +84,8 @@
   # time.timeZone = "America/Denver"; # Mountain
   # time.timeZone = "Europe/Zurich";
 
+  services.xserver.multitouch.invertScroll = false;
+
   fonts = {
     enableFontDir          = true;
     enableGhostscriptFonts = true;
@@ -134,17 +107,24 @@
   #   uid = 1000;
   # };
 
-  users.extraUsers.julie = {
+  users.users.julie = {
     name = "julie";
     group = "users";
     extraGroups = ["wheel" "disk" "audio" "video" "networkmanager" "systemd-journal"];
     isNormalUser = true;
     uid = 1000;
-    createHome= true;
+    createHome = true;
     home = "/home/julie";
   };
 
+  users.users.chris = {
+    name = "chris";
+    isNormalUser = true;
+    extraGroups = ["wheel"];
+    uid = 1001;
+  };
+
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.09";
+  system.stateVersion = "18.03";
 
 }
